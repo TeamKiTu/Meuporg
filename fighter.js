@@ -1,5 +1,5 @@
-import {Character} from "./character";
-class Fighter extends Character {
+import {Character} from "./character.js";
+export class Fighter extends Character {
   constructor(hp, hpmax, dmg, mana, manamax, name) {
     super(12, 12, 4, 40, 40, "Rocky");
   }
