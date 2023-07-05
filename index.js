@@ -1,8 +1,13 @@
-import {Game} from "./game.js";
+import { Game } from "./game.js";
 
-const game = new Game;
-while (!game.isOver()) {
+function startGame() {
+  const game = new Game();
   game.startTurn();
-  game.playerTurn();
-  game.skipTurn();
+  while (!game.isOver()) {
+    game.playerTurn();
+    game.skipTurn();
+  }
+  console.log("Le jeu est terminé !");
 }
+
+document.getElementById("start-game").addEventListener("click", startGame);

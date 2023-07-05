@@ -11,16 +11,20 @@ export class Character {
 
   takeDamage(attacker, dmg) {
     this.hp -= dmg;
-    this.isAlive() ? 0 : this.isDead(attacker);
+    console.log(`${attacker.name} inflige ${dmg} dégâts à ${this.name} !`);
+    if (this.hp <= 0) {
+      this.isDead(attacker);
+    }
   }
+  
 
   dealDamage(victim) {
-    victim.hp -= this.dmg;
-    // victim.takeDamage(this, this.dmg)
+    victim.takeDamage(this, this.dmg);
   }
+  
 
   isAlive() {
-    return (this.hp <= 0) ? false : true;
+    return this.hp > 0;
   }
 
   isDead(killer) {
@@ -29,6 +33,6 @@ export class Character {
       killer.mana = killer.manamax;
     } else {
       killer.mana += 20;
-    };
+    }
   }
 }
