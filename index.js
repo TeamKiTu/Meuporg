@@ -1,8 +1,8 @@
 import {Game} from "./game.js";
 
 const game = new Game;
-while (!game.isOver) {
-  game.startTurn;
-
-  game.skipTurn;
+while (!game.isOver()) {
+  game.startTurn();
+  game.playerTurn();
+  game.skipTurn();
 }
