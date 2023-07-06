@@ -6,6 +6,7 @@ export class Fighter extends Character {
   }
 
   attackSpe(victim) {
+    this.attspe.isUsed = true;
     console.log(`${this.name} utilise ${this.attspe.manacost} points de mana pour lancer ${this.attspe.name} !`);
     console.log(`De plus, ${this.name} subira 2 dégâts de moins jusqu'à son prochain tour.`);
     this.mana -= this.attspe.manacost;

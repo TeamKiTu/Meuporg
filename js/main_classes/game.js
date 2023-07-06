@@ -3,19 +3,20 @@ import {Fighter} from "../character_classes/fighter.js";
 import {Paladin} from "../character_classes/paladin.js";
 import {Berserker} from "../character_classes/berserker.js";
 import {Assassin} from "../character_classes/assassin.js";
+import {Wizard} from "../character_classes/wizard.js";
 
 export class Game {
 
   constructor() {
     this.players = this.initializeCharacters();
     console.log(`Bienvenue dans le MꝌⱤTAAAAAAL ꝀꝌMBAAAAAAAAT !`);
-    console.log(`Ordre des personnages : ${this.players[0].name}, ${this.players[1].name}, ${this.players[2].name}, ${this.players[3].name}, ${this.players[4].name}`);
+    console.log(`Ordre des personnages : ${this.players[0].name}, ${this.players[1].name}, ${this.players[2].name}, ${this.players[3].name}, ${this.players[4].name}, ${this.players[5].name}`);
     this.turnLeft = 10;
     this.turn = 1;
   }
 
   initializeCharacters() {
-    const order = [new Assassin(), new Berserker(), new Monk(), new Paladin(), new Fighter()];
+    const order = [new Assassin(), new Berserker(), new Monk(), new Paladin(), new Fighter(), new Wizard()];
     const shuffledOrder = order.sort((a, b) => 0.5 - Math.random());
     return shuffledOrder
   }
@@ -24,6 +25,7 @@ export class Game {
     console.log(` ╔══════════════════╗`);
     console.log(`﴿║ Début du tour ${this.turn}. ║﴾`);
     console.log(` ╚══════════════════╝`);
+    this.watchStats();    
   }
 
   playerTurn() {
@@ -65,5 +67,23 @@ export class Game {
     } else {
       return true;
     }
+  }
+
+  endOfGame() {
+    let potentialWinner = this.players.filter(player => player.status == "playing");
+    let maxHp = 0;
+    potentialWinner.map(player => player.hp > maxHp ? maxHp = player.hp : maxHp);
+    let winner = potentialWinner.filter(player => player.hp == maxHp);
+    if (winner.length > 1) {
+      for (let i = 0; i < winner.length; i++) {
+        console.log(`${winner[i]} a gagné la partie avec ses copains !`);
+      }
+    } else {
+      console.log(`${winner[0].name} a gagné la partie !`);
+    }
+  }
+
+  watchStats() {
+    this.players.map(player => console.log(player.name + ":" + "❤️".repeat(player.hp) + "🤍".repeat(player.hpmax - player.hp)));
   }
 }
