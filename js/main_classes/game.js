@@ -66,5 +66,4 @@ export class Game {
       return true;
     }
   }
-
 }
