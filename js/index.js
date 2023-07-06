@@ -1,4 +1,4 @@
-import {Game} from "./game.js";
+import {Game} from "./main_classes/game.js";
 
 const game = new Game;
 while (!game.isOver()) {

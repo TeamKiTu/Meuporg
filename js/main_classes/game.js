@@ -1,7 +1,7 @@
-import {Monk} from "./monk.js";
-import {Fighter} from "./fighter.js";
-import {Paladin} from "./paladin.js";
-import {Berserker} from "./berserker.js";
+import {Monk} from "../character_classes/monk.js";
+import {Fighter} from "../character_classes/fighter.js";
+import {Paladin} from "../character_classes/paladin.js";
+import {Berserker} from "../character_classes/berserker.js";
 import {Assassin} from "../character_classes/assassin.js";
 
 export class Game {
