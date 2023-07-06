@@ -12,11 +12,25 @@ export class Character {
 
   takeDamage(victim, attacker, type) {
     if (type == 1) {
-      victim.hp -= attacker.attspe.dmg;
-      console.log(`${attacker.name} inflige ${attacker.attspe.dmg} dégâts à ${victim.name}`);
+      if (victim.constructor.name === "Fighter" && victim.attspe.isUsed) {
+        victim.hp -= (attacker.attspe.dmg - 2);
+        console.log(`${attacker.name} inflige ${attacker.attspe.dmg - 2} dégâts à ${victim.name} !`);
+      } else if (victim.constructor.name === "Assassin" && victim.attspe.isUsed) {
+        console.log(`${attacker.name} essaye d'attaquer ${victim.name} qui est invincible ce tour-ci !`)
+      } else {      
+        victim.hp -= attacker.attspe.dmg;
+        console.log(`${attacker.name} inflige ${attacker.attspe.dmg} dégâts à ${victim.name} !`);
+      }
     } else {
-      victim.hp -= attacker.dmg;
-      console.log(`${attacker.name} inflige ${attacker.dmg} dégâts à ${victim.name}`);
+      if (victim.constructor.name === "Fighter" && victim.attspe.isUsed) {
+        victim.hp -= attacker.dmg - 2;
+        console.log(`${attacker.name} inflige ${attacker.dmg - 2} dégâts à ${victim.name} !`);
+      } else if (victim.constructor.name === "Assassin" && victim.attspe.isUsed) {
+        console.log(`${attacker.name} essaye d'attaquer ${victim.name} qui est invincible ce tour-ci !`);
+      } else {
+        victim.hp -= attacker.dmg;
+        console.log(`${attacker.name} inflige ${attacker.dmg} dégâts à ${victim.name} !`);
+      }
     }
     victim.isAlive() ? console.log(`${victim.name} à ${victim.hp} point(s) de vie.`) : victim.isDead(attacker, victim);
   }
@@ -57,5 +71,6 @@ export class Character {
     } else {
       killer.mana += 20;
     };
+    victim.hp = 0;
   }
 }

@@ -6,3 +6,4 @@ while (!game.isOver()) {
   game.playerTurn();
   game.skipTurn();
 }
+game.endOfGame();
