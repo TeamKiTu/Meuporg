@@ -11,7 +11,7 @@ export class Character {
   }
 
   takeDamage(victim, attacker, type) {
-    if (type) {
+    if (type == 1) {
       victim.hp -= attacker.attspe.dmg;
       console.log(`${attacker.name} inflige ${attacker.attspe.dmg} dégâts à ${victim.name}`);
     } else {
@@ -30,7 +30,7 @@ export class Character {
           this.attackSpe(victim);
           break;
         case '2' : 
-          takeDamage(victim, this, false);
+          this.takeDamage(victim, this, 0);
           break;
         default :
           alert("Erreur de saisie");
@@ -38,7 +38,7 @@ export class Character {
       }
     } else {
       alert(`Tu n'as pas assez de mana ${this.mana} / ${this.attspe.manacost}, tu utilises donc ton attaque de base pauvre con !`);
-      takeDamage(victim, this, false);
+      this.takeDamage(victim, this, 0);
     }
   }
 
