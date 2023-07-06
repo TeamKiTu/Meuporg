@@ -34,9 +34,9 @@ export class Game {
           console.log(`${player + 1} - ${potentialVictim[player].name}`);
         }
         let ask = "0";
-        while (parseInt(ask) <= 0 && parseInt(ask) > potentialVictim.length) {
+        while (parseInt(ask) <= 0 || parseInt(ask) > potentialVictim.length) {
           console.log("Merci de choisir un choix valable !");  
-          let ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
+          ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
         }
         // this.players[i].dealDamage(potentialVictim[ask - 1]);
         console.log(`${this.players[i].name} attaque ${potentialVictim[ask - 1].name} !`);
