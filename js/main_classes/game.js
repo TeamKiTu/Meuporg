@@ -2,7 +2,7 @@ import {Monk} from "./monk.js";
 import {Fighter} from "./fighter.js";
 import {Paladin} from "./paladin.js";
 import {Berserker} from "./berserker.js";
-import {Assassin} from "./assassin.js";
+import {Assassin} from "../character_classes/assassin.js";
 
 export class Game {
 
@@ -35,7 +35,6 @@ export class Game {
         for (let player = 0; player < potentialVictim.length; player++) {
           console.log(`${player + 1} - ${potentialVictim[player].name}`);
         }
-<<<<<<< HEAD
 
         let ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
 
@@ -43,12 +42,6 @@ export class Game {
           alert("Merci de choisir un choix valable !");  
           ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
           console.log(ask);
-=======
-        let ask = "0";
-        while (parseInt(ask) <= 0 || parseInt(ask) > potentialVictim.length) {
-          console.log("Merci de choisir un choix valable !");  
-          ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
->>>>>>> 6b8a7d7145257edc2d0c9bdef61aedcc88a72903
         }
 
         // this.players[i].dealDamage(potentialVictim[ask - 1]);
