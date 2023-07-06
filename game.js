@@ -36,7 +36,7 @@ export class Game {
         let ask = prompt(`Choisis ta cible, ${this.players[i].name} ! (entrez le chiffre correspondant)`);
         while (parseInt(ask) <= 0 || parseInt(ask) > potentialVictim.length) {
           console.log("Merci de choisir un choix valable !");  
-          let ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
+          ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
         }
         console.log(`${this.players[i].name} attaque ${potentialVictim[ask - 1].name} !`);
       }
