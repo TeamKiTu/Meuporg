@@ -10,7 +10,6 @@ export class Game {
     console.log(`Ordre des personnages : ${this.players[0].name}, ${this.players[1].name}, ${this.players[2].name}, ${this.players[3].name}, ${this.players[4].name}`);
     this.turnLeft = 10;
     this.turn = 1;
-
   }
 
   initializeCharacters() {
@@ -24,10 +23,11 @@ export class Game {
   }
 
   playerTurn() {
-    for (let i=0; i < this.players.length - 1; i++) {
-      if (this.players[i].isAlive) {
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].isAlive()) {
+        let allCharacters = this.players;
         console.log(`C'est à toi de jouer, ${this.players[i].name} !`);
-        let potentialVictim = this.players.filter(player => player.status == "playing");
+        let potentialVictim = allCharacters.filter(player => player.status == "playing");
         potentialVictim = potentialVictim.filter(player => player.name != this.players[i].name);
         console.log("Voici tes cibles, appuye sur la touche correspondante pour les faire souffrir !")
         for (let player = 0; player < potentialVictim.length; player++) {
@@ -39,6 +39,7 @@ export class Game {
           ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
         }
         console.log(`${this.players[i].name} attaque ${potentialVictim[ask - 1].name} !`);
+        this.players[i].dealDamage(potentialVictim[ask - 1], this.players[i]);
       }
     }
   }

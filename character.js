@@ -9,22 +9,23 @@ export class Character {
     this.name = name;
   }
 
-  takeDamage(attacker, dmg) {
-    this.hp -= dmg;
-    this.isAlive() ? 0 : this.isDead(attacker);
+  takeDamage(victim, attacker) {
+    victim.hp -= attacker.dmg;
+    console.log(`${attacker.name} inflige ${attacker.dmg} dégâts à ${victim.name}`);
+    victim.isAlive() ? console.log(`${victim.name} à ${victim.hp} point(s) de vie.`) : victim.isDead(attacker, victim);
   }
 
-  dealDamage(victim) {
-    victim.hp -= this.dmg;
-    // victim.takeDamage(this, this.dmg)
+  dealDamage(victim, attacker) {
+    this.takeDamage(victim, attacker);
   }
 
   isAlive() {
-    return (this.hp <= 0) ? false : true;
+    return this.hp > 0;
   }
 
-  isDead(killer) {
-    this.status = "loser";
+  isDead(killer, victim) {
+    victim.status = "loser";
+    console.log(`${victim.name} est mort !`);
     if (killer.mana + 20 > killer.manamax) {
       killer.mana = killer.manamax;
     } else {
