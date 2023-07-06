@@ -33,12 +33,11 @@ export class Game {
         for (let player = 0; player < potentialVictim.length; player++) {
           console.log(`${player + 1} - ${potentialVictim[player].name}`);
         }
-        let ask = "0";
+        let ask = prompt(`Choisis ta cible, ${this.players[i].name} ! (entrez le chiffre correspondant)`);
         while (parseInt(ask) <= 0 || parseInt(ask) > potentialVictim.length) {
           console.log("Merci de choisir un choix valable !");  
           ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
         }
-        // this.players[i].dealDamage(potentialVictim[ask - 1]);
         console.log(`${this.players[i].name} attaque ${potentialVictim[ask - 1].name} !`);
       }
     }
