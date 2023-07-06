@@ -3,7 +3,9 @@ import {Fighter} from "./fighter.js";
 import {Paladin} from "./paladin.js";
 import {Berserker} from "./berserker.js";
 import {Assassin} from "./assassin.js";
+
 export class Game {
+
   constructor() {
     this.players = this.initializeCharacters();
     console.log(`Bienvenue dans le MORTAAAAAAL KOMBAAAAAAAAT !`);
@@ -33,11 +35,15 @@ export class Game {
         for (let player = 0; player < potentialVictim.length; player++) {
           console.log(`${player + 1} - ${potentialVictim[player].name}`);
         }
-        let ask = "0";
-        while (parseInt(ask) <= 0 && parseInt(ask) > potentialVictim.length) {
-          console.log("Merci de choisir un choix valable !");  
-          let ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
+
+        let ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
+
+        while (parseInt(ask) <= 0 || parseInt(ask) > potentialVictim.length) {
+          alert("Merci de choisir un choix valable !");  
+          ask = prompt(`choisi ta cible, ${this.players[i].name} !`);
+          console.log(ask);
         }
+
         // this.players[i].dealDamage(potentialVictim[ask - 1]);
         console.log(`${this.players[i].name} attaque ${potentialVictim[ask - 1].name} !`);
       }
@@ -59,4 +65,5 @@ export class Game {
       return true;
     }
   }
+
 }
